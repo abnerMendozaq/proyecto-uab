@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet/scss" type="text/css" href="scss/styles.scss" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+    <script>
+      (async () => {
+        let buffer = "";
+
+        const fullCode = (
+          await Promise.all(
+            [...document.querySelectorAll("link")]
+              .filter((l) => l.rel === "stylesheet/scss")
+              .map(async (l) => {
+                url = l.href;
+                return await (await fetch(url)).text();
+              })
+          )
+        ).join("\n");
+
+        const basename = "tmp.scss";
+        Sass.writeFile(basename, fullCode);
+        const compiled = await Sass.compile(`@import "${basename}"; `);
+
+        document.head.innerHTML += `<style>${compiled}</style>`;
+      })();
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#home">Inicio</a></li>
+      <li><a href="#news">Sobre Nosotros</a></li>
+      <li><a href="#contact">Galeria</a></li>
+      <li><a href="#contact">Contacto</a></li>
+      <li style="float: right">
+        <a class="active" href="#about">BIENVENID@ Felix Mamani</a>
+      </li>
+    </ul>
+    <!--Container 1-->
+    <div class="contenedor tamano-1">
+      <img src="assets/portada.jpeg" alt="perrito" />
+    </div>
+    <br />
+    <div class="contenedor">
+      <div class="div1">
+        <p>INICIAR SESION</p>
+        <input type="text" placeholder="Ingrese nombre usuario" />
+        <button>Ingresar</button>
+      </div>
+      <div class="div2"><img src="assets/portada.jpeg" alt="perrito" /></div>
+      <div class="div3">
+        <p>
+          Los párrafos argumentativos son aquellos que se utilizan para
+          demostrar o justificar la opinión de un autor. Estos párrafos suelen
+          incluir argumentaciones, citas, descripciones de teorías, entre otros,
+          y se escriben con la finalidad de expresar un punto de vista y para
+          persuadir al lector. Un párrafo es una unidad de un texto que está
+          compuesta por una o varias oraciones, que comienza con una mayúscula y
+          que termina con un punto y aparte. Los textos se organizan de manera
+          tal que cada párrafo trata sobre una idea central. Generalmente, la
+          primera oración de cada párrafo suele explicitar cuál es el punto
+          principal que se desarrollará. En el caso de los párrafos
+          argumentativos, cada párrafo suele incluir un argumento que justifica
+          la idea central del texto. Estos párrafos tienen que ser convincentes
+          y coherentes y no tienen que presentar contradicciones o ambigüedades.
+        </p>
+      </div>
+    </div>
+    <div class="contenedor" style="margin-top: 5%">
+      <div class="div1">
+        <li>Item Uno</li>
+      </div>
+      <div class="div2">
+        <p>
+          Los párrafos argumentativos son aquellos que se utilizan para
+          demostrar o justificar la opinión de un autor. Estos párrafos suelen
+          incluir argumentaciones, citas, descripciones de teorías, entre otros,
+          y se escriben con la finalidad de expresar un punto de vista y para
+          persuadir al lector. Un párrafo es una unidad de un texto que está
+          compuesta por una o varias oraciones, que comienza con una mayúscula y
+          que termina con un punto y aparte. Los textos se organizan de manera
+          tal que cada párrafo trata sobre una idea central. Generalmente, la
+          primera oración de cada párrafo suele explicitar cuál es el punto
+          principal que se desarrollará. En el caso de los párrafos
+          argumentativos, cada párrafo suele incluir un argumento que justifica
+          la idea central del texto. Estos párrafos tienen que ser convincentes
+          y coherentes y no tienen que presentar contradicciones o ambigüedades.
+        </p>
+      </div>
+      <div class="div3">
+        <p>Conversor Dolar a BS / BS A DOLAR</p>
+        <input type="text" placeholder="Bs" />
+        <input type="text" placeholder="$" />
+        <button>Convertir</button>
+      </div>
+    </div>
+  </body>
+</html>
