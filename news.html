@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre Nosotros</title>
+    <link rel="stylesheet/scss" type="text/css" href="scss/styles.scss" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js"
+      integrity="sha512-ifx27fvbS52NmHNCt7sffYPtKIvIzYo38dILIVHQ9am5XGDQ2QjSXGfUZ54Bs3AXdVi7HaItdhAtdhKz8fOFrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      (async () => {
+        let buffer = "";
+
+        const fullCode = (
+          await Promise.all(
+            [...document.querySelectorAll("link")]
+              .filter((l) => l.rel === "stylesheet/scss")
+              .map(async (l) => {
+                url = l.href;
+                return await (await fetch(url)).text();
+              })
+          )
+        ).join("\n");
+
+        const basename = "tmp.scss";
+        Sass.writeFile(basename, fullCode);
+        const compiled = await Sass.compile(`@import "${basename}"; `);
+
+        document.head.innerHTML += `<style>${compiled}</style>`;
+      })();
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li class="active"><a href="news.html">Sobre Nosotros</a></li>
+      <li><a href="gallery.html">Galeria</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+      <li style="float: right">
+        <a class="active" href="#about"
+          >BIENVENID@ <span id="username"></span
+        ></a>
+      </li>
+    </ul>
+    <!--Container 1-->
+    <div class="tamano-1">
+      <img src="assets/Peluqueria-canina-01.jpg" alt="perrito" />
+    </div>
+    <br />
+    <div class="container">
+      <h1>CONÓCENOS</h1>
+      <div class="contenedor">
+        <div class="grid-6">
+          <img src="assets/perritos.jpg" class="perris" />
+        </div>
+        <div class="grid-6">
+          <div>
+            <p>
+              Somos una empresa que desarrolla el mercado de las mascotas
+              ofreciendo soluciones integrales para los expertos en mascotas y
+              sus responsables.
+            </p>
+          </div>
+          <div>
+            <h2>MISIÓN</h2>
+            <p>
+              Afianzar y promover la relación dueño-mascota ofreciendo productos
+              y servicios especializados en la salud y bienestar de las mascotas
+              siendo Aliados Estratégicos de los especialistas por medio de
+              Soluciones Integrales.
+            </p>
+          </div>
+          <div>
+            <h2>VISIÓN</h2>
+            <p>
+              En el 2025, seremos el aliado preferido de los responsables de las
+              mascotas, ofreciendo soluciones integrales e innovadoras para su
+              bienestar. Nos destacamos por el profesionalismo y calidad de
+              nuestro equipo humano, con prácticas empresariales que generan
+              confianza.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

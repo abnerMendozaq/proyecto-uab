@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examen 2</title>
+    <link rel="stylesheet/scss" type="text/css" href="scss/styles.scss" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js"
+      integrity="sha512-ifx27fvbS52NmHNCt7sffYPtKIvIzYo38dILIVHQ9am5XGDQ2QjSXGfUZ54Bs3AXdVi7HaItdhAtdhKz8fOFrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      (async () => {
+        let buffer = "";
+
+        const fullCode = (
+          await Promise.all(
+            [...document.querySelectorAll("link")]
+              .filter((l) => l.rel === "stylesheet/scss")
+              .map(async (l) => {
+                url = l.href;
+                return await (await fetch(url)).text();
+              })
+          )
+        ).join("\n");
+
+        const basename = "tmp.scss";
+        Sass.writeFile(basename, fullCode);
+        const compiled = await Sass.compile(`@import "${basename}"; `);
+
+        document.head.innerHTML += `<style>${compiled}</style>`;
+      })();
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="news.html">Sobre Nosotros</a></li>
+      <li><a href="gallery.html">Galeria</a></li>
+      <li class="active"><a href="contact.html">Contacto</a></li>
+      <li style="float: right">
+        <a class="active">BIENVENID@ <span id="username"></span></a>
+      </li>
+    </ul>
+    <div class="tamano-1">
+      <img src="assets/Peluqueria-canina-01.jpg" alt="perrito" />
+    </div>
+    <br />
+    <!--Container 1-->
+    <div class="container">
+      <div class="contact">
+        <div class="grid-12">
+          <section>
+            <h1>Contáctanos</h1>
+          </section>
+        </div>
+        <div>
+          <div class="grid-12">
+            <hr />
+          </div>
+
+          <div class="grid-12">
+            <div class="contact-content">
+              <form>
+                <div class="form-header">
+                  <h3 class="form-title">
+                    Solicitudes, felicitaciones, quejas y reclamos
+                  </h3>
+                  <span class="form-description"
+                    >Tu opinión y tus peticiones son muy importantes para
+                    nosotros. Completa el siguiente formulario con tus datos de
+                    contacto y con tu requerimiento o tus comentarios. El Área
+                    de Experiencia al Cliente gestionará tu mensaje en el menor
+                    tiempo posible.
+                  </span>
+                </div>
+                <div class="form-body">
+                  <ul>
+                    <li>
+                      <label class="field-label">Sin nombre</label>
+                    </li>
+                    <li>
+                      <label class="field-label"
+                        >Nombre<span class="field-required">*</span></label
+                      >
+                      <div class="ginput_container ginput_container_text">
+                        <input
+                          name="input_1"
+                          type="text"
+                          class="form-control"
+                        />
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_2"
+                      class="gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_2"
+                        >Apellidos<span class="gfield_required">*</span></label
+                      >
+                      <div class="ginput_container ginput_container_text">
+                        <input
+                          name="input_2"
+                          id="input_2_2"
+                          type="text"
+                          value=""
+                          class="medium"
+                          aria-required="true"
+                          aria-invalid="false"
+                        />
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_3"
+                      class="gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_3"
+                        >Número de identificación / Persona natural o
+                        jurídica<span class="gfield_required">*</span></label
+                      >
+                      <div class="ginput_container ginput_container_text">
+                        <input
+                          name="input_3"
+                          id="input_2_3"
+                          type="text"
+                          value=""
+                          class="medium"
+                          aria-required="true"
+                          aria-invalid="false"
+                        />
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_4"
+                      class="gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_4"
+                        >Email<span class="gfield_required">*</span></label
+                      >
+                      <div class="ginput_container ginput_container_text">
+                        <input
+                          name="input_4"
+                          id="input_2_4"
+                          type="text"
+                          value=""
+                          class="medium"
+                          aria-required="true"
+                          aria-invalid="false"
+                        />
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_14"
+                      class="gfield field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_14"
+                        >Sin nombre</label
+                      >
+                    </li>
+                    <li
+                      id="field_2_5"
+                      class="gfield field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_5"
+                        >Teléfono</label
+                      >
+                      <div class="ginput_container ginput_container_text">
+                        <input
+                          name="input_5"
+                          id="input_2_5"
+                          type="text"
+                          value=""
+                          class="medium"
+                          aria-invalid="false"
+                        />
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_8"
+                      class="gfield field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_8">Ciudad</label>
+                      <div class="ginput_container ginput_container_text">
+                        <input
+                          name="input_8"
+                          id="input_2_8"
+                          type="text"
+                          value=""
+                          class="medium"
+                          aria-invalid="false"
+                        />
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_6"
+                      class="gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <input
+                        name="input_6"
+                        id="input_2_6"
+                        type="hidden"
+                        class="gform_hidden"
+                        aria-invalid="false"
+                        value="Colombia"
+                      />
+                    </li>
+                    <li
+                      id="field_2_10"
+                      class="gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <input
+                        name="input_10"
+                        id="input_2_10"
+                        type="hidden"
+                        class="gform_hidden"
+                        aria-invalid="false"
+                        value="Especialista"
+                      />
+                    </li>
+                    <li
+                      id="field_2_9"
+                      class="gfield field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_9"
+                        >Mensaje</label
+                      >
+                      <div class="ginput_container ginput_container_textarea">
+                        <textarea
+                          name="input_9"
+                          id="input_2_9"
+                          class="textarea medium"
+                          aria-invalid="false"
+                          rows="10"
+                          cols="50"
+                        ></textarea>
+                      </div>
+                    </li>
+                    <li
+                      id="field_2_15"
+                      class="gfield field_sublabel_below field_description_below gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_2_15"
+                        >Sin nombre</label
+                      >
+                    </li>
+                    <li
+                      id="field_2_7"
+                      class="gfield gfield_contains_required field_sublabel_below field_description_above hidden_label gfield_visibility_visible"
+                    >
+                      <label class="gfield_label"
+                        ><span class="gfield_required">*</span></label
+                      >
+                      <div class="ginput_container ginput_container_checkbox">
+                        <ul class="gfield_checkbox" id="input_2_7">
+                          <li class="gchoice_2_7_1">
+                            <input
+                              name="input_7.1"
+                              type="checkbox"
+                              value='Estoy de acuerdo con la <a href="/politicas-de-tratamiento-de-datos/?usuario=" id="link_politicas">Política de Tratamiento de Datos Personales</a>'
+                              id="choice_2_7_1"
+                            />
+                            <label for="choice_2_7_1" id="label_2_7_1"
+                              >Estoy de acuerdo con la
+                              <a
+                                href="/politicas-de-tratamiento-de-datos/?usuario=esp"
+                                id="link_politicas"
+                                >Política de Tratamiento de Datos Personales</a
+                              ></label
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="gform_footer top_label">
+                  <input
+                    type="submit"
+                    id="gform_submit_button_2"
+                    class="gform_button button"
+                    value="Enviar"
+                    onclick='if(window["gf_submitting_2"]){return false;}  window["gf_submitting_2"]=true;  '
+                    onkeypress='if( event.keyCode == 13 ){ if(window["gf_submitting_2"]){return false;} window["gf_submitting_2"]=true;  jQuery("#gform_2").trigger("submit",[true]); }'
+                  />
+                  <input
+                    type="hidden"
+                    name="gform_ajax"
+                    value="form_id=2&amp;title=1&amp;description=1&amp;tabindex=0"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="is_submit_2"
+                    value="1"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_submit"
+                    value="2"
+                  />
+
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_unique_id"
+                    value=""
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="state_2"
+                    value="WyJbXSIsIjNlNzJjZjYwNjVkODAzNzlmYzA0YzdmNmE4OTcyN2NjIl0="
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_target_page_number_2"
+                    id="gform_target_page_number_2"
+                    value="0"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_source_page_number_2"
+                    id="gform_source_page_number_2"
+                    value="1"
+                  />
+                  <input type="hidden" name="gform_field_values" value="" />
+                </div>
+              </form>
+            </div>
+            <iframe
+              style="display: none; width: 0px; height: 0px"
+              src="about:blank"
+              name="gform_ajax_frame_2"
+              id="gform_ajax_frame_2"
+              title="Este iframe contiene la lógica necesaria para gestionar formularios con ajax activado."
+            ></iframe>
+            <p></p>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examen 2</title>
+    <link rel="stylesheet/scss" type="text/css" href="scss/styles.scss" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js"
+      integrity="sha512-ifx27fvbS52NmHNCt7sffYPtKIvIzYo38dILIVHQ9am5XGDQ2QjSXGfUZ54Bs3AXdVi7HaItdhAtdhKz8fOFrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      (async () => {
+        let buffer = "";
+
+        const fullCode = (
+          await Promise.all(
+            [...document.querySelectorAll("link")]
+              .filter((l) => l.rel === "stylesheet/scss")
+              .map(async (l) => {
+                url = l.href;
+                return await (await fetch(url)).text();
+              })
+          )
+        ).join("\n");
+
+        const basename = "tmp.scss";
+        Sass.writeFile(basename, fullCode);
+        const compiled = await Sass.compile(`@import "${basename}"; `);
+
+        document.head.innerHTML += `<style>${compiled}</style>`;
+      })();
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="news.html">Sobre Nosotros</a></li>
+      <li class="active"><a href="gallery.html">Galeria</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+      <li style="float: right">
+        <a class="active">BIENVENID@ <span id="username"></span></a>
+      </li>
+    </ul>
+    <!--Container 1-->
+    <div class="tamano-1">
+      <img src="assets/Peluqueria-canina-01.jpg" alt="perrito" />
+    </div>
+    <br />
+    <div class="contenedor">
+      <img src="assets/peluqueria-canina.jpeg" class="gallery" />
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
